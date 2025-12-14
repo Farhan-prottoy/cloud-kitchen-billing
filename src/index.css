@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Futuristic / Cyberpunk Dark Theme Default */
+    --background: 240 20% 4%;
+    --foreground: 180 10% 98%;
+    
+    --card: 240 24% 6%;
+    --card-foreground: 180 10% 98%;
+ 
+    --popover: 240 24% 6%;
+    --popover-foreground: 180 10% 98%;
+ 
+    --primary: 190 100% 50%; /* Cyan Neon */
+    --primary-foreground: 240 20% 4%;
+ 
+    --secondary: 280 100% 60%; /* Purple Neon */
+    --secondary-foreground: 180 10% 98%;
+ 
+    --muted: 240 20% 12%;
+    --muted-foreground: 240 10% 60%;
+ 
+    --accent: 240 20% 15%;
+    --accent-foreground: 180 10% 98%;
+ 
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 20% 20%;
+    --input: 240 20% 12%;
+    --ring: 190 100% 50%;
+ 
+    --radius: 0.75rem;
+  }
+ 
+  /* We can keep .dark identical since we are forcing a dark aesthetics, 
+     but let's define a "light" version just in case, that is also tech-y */
+  .light {
+    --background: 240 25% 98%;
+    --foreground: 240 20% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 20% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 20% 4%;
+    --primary: 240 60% 50%;
+    --primary-foreground: 0 0% 98%;
+    /* ... keep standard ... */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+     /* subtle grid background for tech feel */
+     background-image: 
+       linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+       linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+     background-size: 50px 50px;
+  }
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  @apply bg-card/60 backdrop-blur-md border border-white/10 shadow-lg;
+}
+.glass-panel {
+  @apply bg-black/40 backdrop-blur-xl border border-white/5;
+}
+.neon-border {
+  box-shadow: 0 0 5px theme('colors.primary.DEFAULT'), inset 0 0 5px theme('colors.primary.DEFAULT');
+}
+.neon-text {
+  text-shadow: 0 0 10px theme('colors.primary.DEFAULT');
+}
