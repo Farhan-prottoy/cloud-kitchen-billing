@@ -23,7 +23,7 @@ const InvoiceView = () => {
 
   return (
     <div className="p-8 max-w-4xl mx-auto space-y-6">
-      <div className="flex justify-between items-center no-print">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 no-print">
         <h1 className="text-2xl font-bold">Invoice Preview</h1>
         <Button onClick={handlePrint}>
           <Printer className="mr-2 h-4 w-4" /> Print Invoice
@@ -63,37 +63,39 @@ const InvoiceView = () => {
         </div>
 
         {/* Table */}
-        <table className="w-full mb-8">
-          <thead>
-            <tr className="border-b-2 border-black">
-              <th className="text-left py-2 font-bold">Description</th>
-              <th className="text-center py-2 font-bold w-24">Qty/Pers</th>
-              <th className="text-right py-2 font-bold w-32">Unit Price</th>
-              <th className="text-right py-2 font-bold w-32">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {bill.items.map((item, index) => (
-              <tr key={index} className="border-b border-gray-200">
-                <td className="py-2">
-                  {item.description}
-                  {item.packageType && (
-                    <span className="text-xs text-gray-500 ml-2">
-                      ({item.packageType})
-                    </span>
-                  )}
-                </td>
-                <td className="text-center py-2">{item.quantity}</td>
-                <td className="text-right py-2">
-                  {formatCurrency(item.unitPrice)}
-                </td>
-                <td className="text-right py-2">
-                  {formatCurrency(item.quantity * item.unitPrice)}
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full mb-8 min-w-[600px]">
+            <thead>
+              <tr className="border-b-2 border-black">
+                <th className="text-left py-2 font-bold">Description</th>
+                <th className="text-center py-2 font-bold w-24">Qty/Pers</th>
+                <th className="text-right py-2 font-bold w-32">Unit Price</th>
+                <th className="text-right py-2 font-bold w-32">Total</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {bill.items.map((item, index) => (
+                <tr key={index} className="border-b border-gray-200">
+                  <td className="py-2">
+                    {item.description}
+                    {item.packageType && (
+                      <span className="text-xs text-gray-500 ml-2">
+                        ({item.packageType})
+                      </span>
+                    )}
+                  </td>
+                  <td className="text-center py-2">{item.quantity}</td>
+                  <td className="text-right py-2">
+                    {formatCurrency(item.unitPrice)}
+                  </td>
+                  <td className="text-right py-2">
+                    {formatCurrency(item.quantity * item.unitPrice)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         {/* Totals */}
         <div className="flex justify-end mb-12">

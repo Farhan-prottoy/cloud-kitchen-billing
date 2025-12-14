@@ -139,7 +139,7 @@ const EventForm = () => {
           <CardHeader>
             <CardTitle>Event Information</CardTitle>
           </CardHeader>
-          <CardContent className="grid gap-4 md:grid-cols-2">
+          <CardContent className="grid gap-4 grid-cols-1 md:grid-cols-2">
             <div className="space-y-2">
               <label className="text-sm font-medium">Event Name</label>
               <Input
@@ -197,7 +197,7 @@ const EventForm = () => {
               {fields.map((field, index) => (
                 <div
                   key={field.id}
-                  className="grid gap-4 md:grid-cols-12 items-end border p-4 rounded-lg bg-muted/20"
+                  className="grid gap-4 grid-cols-1 md:grid-cols-12 items-end border p-4 rounded-lg bg-muted/20"
                 >
                   <div className="md:col-span-3 space-y-2">
                     <label className="text-xs font-medium">Package Name</label>

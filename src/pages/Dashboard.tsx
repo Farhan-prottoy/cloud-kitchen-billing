@@ -68,7 +68,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {[
           {
             title: "Total Revenue",
@@ -125,7 +125,10 @@ const Dashboard = () => {
         ))}
       </div>
 
-      <motion.div variants={item} className="grid gap-6 md:grid-cols-7">
+      <motion.div
+        variants={item}
+        className="grid gap-6 grid-cols-1 md:grid-cols-7"
+      >
         <Card className="col-span-4 glass-panel md:col-span-7">
           <CardHeader>
             <CardTitle>Recent Transmissions</CardTitle>

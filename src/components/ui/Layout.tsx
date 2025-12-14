@@ -110,7 +110,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       </div>
 
       {/* Main Content Area */}
-      <main className="flex-1 px-4 py-8 md:pl-80 md:pr-8 md:py-8 mt-16 md:mt-0 transition-all duration-300 min-h-screen">
+      <main className="flex-1 px-4 py-8 md:pl-80 md:pr-8 md:py-8 pt-24 md:mt-0 transition-all duration-300 min-h-screen">
         <div className="max-w-7xl mx-auto space-y-8 glass-panel md:bg-transparent md:border-none md:backdrop-blur-none p-4 md:p-0 rounded-xl">
           {children}
         </div>
