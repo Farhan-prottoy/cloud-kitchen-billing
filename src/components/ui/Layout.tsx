@@ -4,8 +4,6 @@ import {
   LayoutDashboard,
   FileText,
   Calendar,
-  Moon,
-  Sun,
   Menu,
   X,
   Zap,
@@ -19,19 +17,14 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
-  const [isDark, setIsDark] = useState(true); // Default to dark for futuristic feel
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    if (isDark) {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.classList.add("light");
-    } else {
-      document.documentElement.classList.remove("light");
-      document.documentElement.classList.add("dark");
-    }
-  };
+  // Enforce dark mode purely by default (assuming index.css :root has dark vars)
+  // or we can force it here just in case the class was left over
+  React.useEffect(() => {
+    document.documentElement.classList.add("dark");
+    document.documentElement.classList.remove("light");
+  }, []);
 
   const navItems = [
     { label: "Dashboard", path: "/", icon: LayoutDashboard },
@@ -96,22 +89,6 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             );
           })}
         </nav>
-
-        <div className="mt-auto p-4 border-t border-white/5">
-          <button
-            onClick={toggleTheme}
-            className="group flex items-center gap-3 w-full px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:bg-white/5 hover:text-white transition-all border border-transparent hover:border-white/10"
-          >
-            <div className="relative">
-              {isDark ? (
-                <Sun size={18} className="text-yellow-400" />
-              ) : (
-                <Moon size={18} className="text-indigo-400" />
-              )}
-            </div>
-            <span>{isDark ? "Light Mode" : "Dark Mode"}</span>
-          </button>
-        </div>
       </aside>
 
       {/* Mobile Header Glass */}
